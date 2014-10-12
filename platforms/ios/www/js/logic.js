@@ -19,21 +19,28 @@ richeApp.controller('RicheAppCtrl', function ($scope) {
   $scope.mainOptionSelected = function(groupIndex){
 
     $scope.selectedGroup = groups[groupIndex];
+
     var subQuestions = $scope.selectedGroup.subQuetsions;
-    var index = Math.floor((Math.random() * subQuestions.length));
-    $scope.secondQuestion = subQuestions[index];
-    console.log(index)
-    index++;
-    if (index == subQuestions.length) {index = 0};
-    $scope.thirdQuestion = subQuestions[index];
-    console.log(index)
+    var tempArray = subQuestions.slice(0)
+    var index = Math.floor((Math.random() * tempArray.length));
+    $scope.secondQuestion = tempArray[index];
+
+    tempArray.splice(index,1);
+    console.log(tempArray);
+    index = Math.floor((Math.random() * tempArray.length));
+    $scope.thirdQuestion = tempArray[index];
   };
 
   $scope.optionSelected = function($event){
     var elem = angular.element($event.srcElement);
-    elem.addClass("selecting");
+    elem.addClass("option-selecting");
     nextSnd.play();
-    window.setTimeout(function(){slitslider.next(); $(".option-selectable").removeClass("selecting");}, 500);
+    window.setTimeout(function(){
+      slitslider.next();
+      $(".option-selectable").removeClass("option-selecting");
+      initCheckboxes();
+      console.log("here");
+    }, 800);
   };
 
   $scope.start();
