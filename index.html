@@ -7,8 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
 		<script type="text/javascript" src="js/angular.min.js"></script>
 		<script type="text/javascript" src="js/questionair.js"></script>
@@ -18,7 +19,17 @@
 		</noscript>
     </head>
     <body ng-controller="RicheAppCtrl" style="display:none">
-
+<!-- <section>
+				<form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off">
+					<h2>Why do you interactively procrastinate high-payoff content without backward-compatible data?</h2>
+					<ul>
+						<li><input id="cb6" name="cb6" type="checkbox"><label for="cb6">Credibly reintermediate backend ideas</label></li>
+						<li><input id="cb7" name="cb7" type="checkbox"><label for="cb7">Continually reintermediate integrated processes</label></li>
+						<li><input id="cb8" name="cb8" type="checkbox"><label for="cb8">Distinctively exploit optimal alignments</label></li>
+						<li><input id="cb9" name="cb9" type="checkbox"><label for="cb9">Quickly coordinate e-business applications</label></li>
+					<ul>
+				</form>
+			</section> -->
         <div class="container demo-1">
 
 			<!-- Codrops top bar -->
@@ -27,11 +38,11 @@
 
 				<div class="sl-slider">
 
-					<div class="sl-slide bg-0" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+					<div class="sl-slide bg-0" data-orientation="vertical" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 						<div class="sl-slide-inner welcome">
 
 							<h2 style="font-size:50px; margin-bottom:-100px">Color Riche mới!</h2>
-							<blockquote style="color:white;font-size:18px">
+							<blockquote style="color:white;">
 								<div>
 								<p>Chắc gì màu son hiện tại đã phù hợp với tính cách thật của bạn? Hãy tìm câu trả lời cùng son màu lâu phai
 								</p>
@@ -51,20 +62,32 @@
 							<div class="deco">
 								<div class="question">{{firstQuestion.question}}</div>
 							</div>
-							<div class="option-selectable option" ng-click="mainOptionSelected(firstQuestion.options[0].groupIndex)">{{firstQuestion.options[0].text}}</div>
-							<div class="option-selectable option" ng-click="mainOptionSelected(firstQuestion.options[1].groupIndex)">{{firstQuestion.options[1].text}}</div>
-							<div class="option-selectable option" ng-click="mainOptionSelected(firstQuestion.options[2].groupIndex)">{{firstQuestion.options[2].text}}</div>
-							<div class="option-selectable option" ng-click="mainOptionSelected(firstQuestion.options[3].groupIndex)">{{firstQuestion.options[3].text}}</div>
-
+							<form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off">
+								<ul>
+									<li ng-click="mainOptionSelected(firstQuestion.options[0].groupIndex)" class="option-selectable"><input id="cb1" name="cb1" type="checkbox"><label for="cb1"><div class="option">{{firstQuestion.options[0].text}}</div></label></li>
+									<li ng-click="mainOptionSelected(firstQuestion.options[1].groupIndex)" class="option-selectable"><input id="cb2" name="cb2" type="checkbox"><label for="cb2"><div class="option">{{firstQuestion.options[1].text}}</div></label></li>
+									<li ng-click="mainOptionSelected(firstQuestion.options[2].groupIndex)" class="option-selectable"><input id="cb3" name="cb3" type="checkbox"><label for="cb3"><div class="option">{{firstQuestion.options[2].text}}</div></label></li>
+									<li ng-click="mainOptionSelected(firstQuestion.options[3].groupIndex)" class="option-selectable"><input id="cb4" name="cb4" type="checkbox"><label for="cb4"><div class="option">{{firstQuestion.options[3].text}}</div></label></li>
+									</ul>
+							</form>
 						</div>
 					</div>
 
-					<div class="sl-slide bg-3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+					<div class="sl-slide bg-3" data-orientation="vertical" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
 						<div class="sl-slide-inner">
 							<div class="deco">
 								<div class="question">{{secondQuestion.question}}</div>
 							</div>
-							<div ng-class="{option: option.image == '','option-img': option.image !=''}" ng-click="optionSelected($event)" ng-repeat="option in secondQuestion.options" style="background-image:url(images/{{option.image}})"><div>{{option.text}}</div></div>
+							<form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off" ng-if="secondQuestion.options[0].image == ''">
+								<ul>
+									<li ng-click="optionSelected($event)" class="option-selectable" ng-repeat="option in secondQuestion.options"><input id="cb{{5*$index}}" name="cb{{5*$index}}" type="checkbox"><label for="cb{{5*$index}}"><div class="option">{{option.text}}</div></label></li>
+								</ul>
+							</form>
+							<div class="option-container" ng-if="secondQuestion.options[0].image != ''">
+								<div ng-repeat="option in secondQuestion.options">
+									<div ng-click="optionSelected($event)" style="background-image:url(images/{{option.image}}) " class="option-selectable option-img"><div>{{option.text}}</div></div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -73,15 +96,24 @@
 							<div class="deco">
 								<div class="question">{{thirdQuestion.question}}</div>
 							</div>
-							<div ng-class="{option: option.image == '','option-img': option.image !=''}" ng-click="optionSelected($event)" ng-repeat="option in thirdQuestion.options" style="background-image:url(images/{{option.image}})"><div>{{option.text}}</div></div>
+							<form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off" ng-if="thirdQuestion.options[0].image == ''">
+								<ul>
+									<li ng-click="optionSelected($event)" class="option-selectable" ng-repeat="option in thirdQuestion.options"><input id="cb{{6*$index}}" name="cb{{6*$index}}" type="checkbox"><label for="cb{{6*$index}}"><div class="option">{{option.text}}</div></label></li>
+								</ul>
+							</form>
+							<div class="option-container" ng-if="thirdQuestion.options[0].image != ''">
+								<div ng-repeat="option in thirdQuestion.options">
+									<div ng-class="{option: option.image == '','option-img': option.image !=''}" ng-click="optionSelected($event)" style="background-image:url(images/{{option.image}})" class="option-selectable"><div>{{option.text}}</div></div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class="sl-slide bg-5" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+					<div class="sl-slide bg-5" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
 						<div class="sl-slide-inner">
 							<h2 style="margin:0; border-bottom:2px dashed rgba(150,150,150,0.4)">HÃY ĐỂ COLOR RICHE TIẾT LỘ MÀU SON PHÙ HỢP VỚI TÍNH CÁCH CỦA BẠN</h2>
 
-							<blockquote style="font-size:18px; margin-bottom:-100px"><p>{{selectedGroup.text}}</p><cite>Màu son phù hợp dành cho bạn là: {{selectedGroup.lipstick}}</cite>
+							<blockquote style="margin-bottom:-120px"><p>{{selectedGroup.text}}</p><cite>Màu son phù hợp dành cho bạn là: {{selectedGroup.lipstick}}</cite>
 								<div class="sl-trans-elems">
 								<div class="btn-start stitched" style="margin-bottom:-200px" ng-click="start()">
 								  BẮT ĐẦU LẠI
@@ -101,7 +133,7 @@
 			</div><!-- /slider-wrapper -->
 
         </div>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.ba-cond.min.js"></script>
 		<script type="text/javascript" src="js/jquery.slitslider.js"></script>
 		<script type="text/javascript">
@@ -111,12 +143,11 @@
 			$(function() {
 				slitslider = $( '#slider' ).slitslider( {
 							onBeforeChange : function( slide, pos ) {
-
 							}
 						} );
 
 			  // Buffer sound when page load
-			  nextSnd = new Audio("sound/screenbib.wav");
+			  nextSnd = new Audio("sound/iphone_short_sms.mp3");
 				var Page = (function() {
 
 					var $navArrows = $( '#nav-arrows' ),
@@ -132,16 +163,32 @@
 							$(".option-img").height($(".option-img").width());
 							// add navigation events
 							$(".btn-start").on('click', function(){
+								// Clear checboxes
+								var checkbxs = Array.prototype.slice.call( document.querySelectorAll( 'input' ));
+								checkbxs.forEach( function( el ) {
+									reset(el);
+								 });
+								$(":checkbox").attr("checked",false);
+
 								$(this).addClass("selecting");
 								 nextSnd.play();
-								window.setTimeout(function(){slitslider.next(); $(".btn-start").removeClass("selecting");}, 500);
+
+								window.setTimeout(function(){
+									slitslider.next();
+									$(".btn-start").removeClass("selecting");
+								}, 800);
 								return false;
 							});
+
 							$(".option-selectable").on('click', function(){
-								$(this).addClass("selecting");
+								$(this).addClass("option-selecting");
 								 nextSnd.play();
-								window.setTimeout(function(){slitslider.next(); $(".option-selectable").removeClass("selecting");}, 500);
-								return false;
+								window.setTimeout(function(){
+									slitslider.next();
+									$(".option-selectable").removeClass("option-selecting");
+									initCheckboxes();
+								}, 800);
+								// return false;
 							});
 							$navArrows.children( ':last' ).on( 'click', function() {
 
@@ -186,7 +233,7 @@
 
 				/*
 
-				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
 
 				// call the plugin's add method
 				ss.add($items);
@@ -195,5 +242,7 @@
 
 			});
 		</script>
+
+		<script type="text/javascript" src="js/svgcheckbx.js"></script>
 	</body>
 </html>

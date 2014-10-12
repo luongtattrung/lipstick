@@ -66,7 +66,7 @@ var groups = [{
   image: "",
   lipstick:"P501, P502, R517, R518",
   subQuetsions:[{
-    question: "Bạn thường chọn loại hoa quả nào cho bàn làm việc của bạn:",
+    question: "Bạn thường chọn loại hoa nào cho bàn làm việc của bạn:",
     options:[{text:"Hồng", image:"rose.jpg"},
             {text:"Hoa ly", image:"lily.jpg"},
             {text:"Hoa cát tường", image:"cattuong.jpg"}]
