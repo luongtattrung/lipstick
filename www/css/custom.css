@@ -525,7 +525,7 @@
 }
 .sl-trans-elems .option-selecting div,
 .sl-trans-elems .selecting {
-	-webkit-animation:fadeIn 0.8s linear both;
+	-webkit-animation:fadeIn1 0.8s linear both;
 }
 @-webkit-keyframes roll{
 	0% {-webkit-transform: translateX(500px) rotate(360deg);}
@@ -585,6 +585,26 @@
 }
 @keyframes fadeIn{
 	0% {opacity: 0;}
+	100% {opacity: 1;}
+}
+@-webkit-keyframes fadeIn1{
+	0% {opacity: 0.4;}
+	100% {opacity: 1;}
+}
+@-moz-keyframes fadeIn1{
+	0% {opacity: 0.4;}
+	100% {opacity: 1;}
+}
+@-o-keyframes fadeIn1{
+	0% {opacity: 0.4;}
+	100% {opacity: 1;}
+}
+@-ms-keyframes fadeIn1{
+	0% {opacity: 0.4;}
+	100% {opacity: 1;}
+}
+@keyframes fadeIn1{
+	0% {opacity: 0.4;}
 	100% {opacity: 1;}
 }
 @-webkit-keyframes scaleDown{
@@ -702,4 +722,9 @@
 .option-container{
 	width:1000px;
 	margin:auto;
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Disable selection/copy in UIWebView */
 }

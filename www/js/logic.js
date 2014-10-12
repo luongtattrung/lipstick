@@ -33,7 +33,7 @@ richeApp.controller('RicheAppCtrl', function ($scope) {
 
   $scope.optionSelected = function($event){
     var elem = angular.element($event.srcElement);
-    elem.addClass("option-selecting");
+    elem.parent().addClass("option-selecting");
     nextSnd.play();
     window.setTimeout(function(){
       slitslider.next();

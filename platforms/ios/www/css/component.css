@@ -28,8 +28,7 @@
 }
 
 .ac-custom li {
-	margin: 0 auto;
-	padding: 2em 0;
+	margin: 4em auto;
 	position: relative;
 }
 
@@ -80,7 +79,7 @@
 .ac-custom input[type="checkbox"]:checked + label,
 .ac-custom input[type="radio"]:checked + label {
 	color: #fff;
-} 
+}
 
 .ac-custom input[type="checkbox"]:checked + label::before,
 .ac-custom input[type="radio"]:checked + label::before {
@@ -134,12 +133,12 @@
 
 .ac-circle svg path {
 	stroke-width: 5px;
-} 
+}
 
 /* Box Fill */
 .ac-boxfill svg path {
 	stroke-width: 8px;
-} 
+}
 
 /* Swirl */
 .ac-swirl svg path {

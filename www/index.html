@@ -38,7 +38,7 @@
 
 				<div class="sl-slider">
 
-					<div class="sl-slide bg-0" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+					<div class="sl-slide bg-0" data-orientation="vertical" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 						<div class="sl-slide-inner welcome">
 
 							<h2 style="font-size:50px; margin-bottom:-100px">Color Riche mới!</h2>
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 
-					<div class="sl-slide bg-3" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
+					<div class="sl-slide bg-3" data-orientation="vertical" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
 						<div class="sl-slide-inner">
 							<div class="deco">
 								<div class="question">{{secondQuestion.question}}</div>
@@ -84,7 +84,9 @@
 								</ul>
 							</form>
 							<div class="option-container" ng-if="secondQuestion.options[0].image != ''">
-								<div ng-click="optionSelected($event)" ng-repeat="option in secondQuestion.options" style="background-image:url(images/{{option.image}}) " class="option-selectable option-img"><div>{{option.text}}</div></div>
+								<div ng-repeat="option in secondQuestion.options">
+									<div ng-click="optionSelected($event)" style="background-image:url(images/{{option.image}}) " class="option-selectable option-img"><div>{{option.text}}</div></div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -100,12 +102,14 @@
 								</ul>
 							</form>
 							<div class="option-container" ng-if="thirdQuestion.options[0].image != ''">
-								<div ng-class="{option: option.image == '','option-img': option.image !=''}" ng-click="optionSelected($event)" ng-repeat="option in thirdQuestion.options" style="background-image:url(images/{{option.image}})" class="option-selectable"><div>{{option.text}}</div></div>
+								<div ng-repeat="option in thirdQuestion.options">
+									<div ng-class="{option: option.image == '','option-img': option.image !=''}" ng-click="optionSelected($event)" style="background-image:url(images/{{option.image}})" class="option-selectable"><div>{{option.text}}</div></div>
+								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="sl-slide bg-5" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
+					<div class="sl-slide bg-5" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
 						<div class="sl-slide-inner">
 							<h2 style="margin:0; border-bottom:2px dashed rgba(150,150,150,0.4)">HÃY ĐỂ COLOR RICHE TIẾT LỘ MÀU SON PHÙ HỢP VỚI TÍNH CÁCH CỦA BẠN</h2>
 
@@ -175,6 +179,7 @@
 								}, 800);
 								return false;
 							});
+
 							$(".option-selectable").on('click', function(){
 								$(this).addClass("option-selecting");
 								 nextSnd.play();
@@ -228,7 +233,7 @@
 
 				/*
 
-				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
+				var $items  = $('<div class="sl-slide sl-slide-color-2" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1"><div class="sl-slide-inner bg-1"><div class="sl-deco" data-icon="t"></div><h2>some text</h2><blockquote><p>bla bla</p><cite>Margi Clarke</cite></blockquote></div></div>');
 
 				// call the plugin's add method
 				ss.add($items);
